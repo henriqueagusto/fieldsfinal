@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão Financeira Empresarial Premium | Fields Finanças</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* VARIÁVEIS GLOBAIS REFINADAS */
+        :root {
+            --primary-gold: #D4AF37;
+            --primary-gold-light: #F1E5AC;
+            --primary-gold-dark: #B8860B;
+            --bg-dark: #0A0A0A;
+            --bg-dark-secondary: #121212;
+            --bg-darker: #050505;
+            --text-white: #FFFFFF;
+            --text-gray: #CCCCCC;
+            --text-light-gray: #E5E5E5;
+            --border-gold: rgba(212, 175, 55, 0.4);
+            --shadow-gold: rgba(212, 175, 55, 0.25);
+            --glass-bg: rgba(15, 15, 15, 0.7);
+            --glass-border: rgba(212, 175, 55, 0.15);
+            --transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
+        /* RESET E CONFIGURAÇÕES BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-weight: 300;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* HEADER PREMIUM */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-gold);
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+            padding: 0 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-white);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-dark) 100%);
+            color: var(--bg-dark);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.4rem;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+            background: linear-gradient(to right, var(--primary-gold), var(--primary-gold-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--primary-gold);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-gold-light);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            padding: 0.9rem 2rem;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-dark) 100%);
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        /* HERO SECTION ULTRA PREMIUM */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.03) 0%, transparent 30%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            color: var(--primary-gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .hero-tag::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 2rem;
+            height: 1px;
+            background: var(--primary-gold);
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 7vw, 5.5rem);
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--text-white) 0%, var(--primary-gold-light) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            font-weight: 300;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .primary-button {
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-dark) 100%);
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .primary-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .secondary-button {
+            padding: 1.2rem 2.5rem;
+            background: transparent;
+            color: var(--primary-gold);
+            border: 2px solid var(--border-gold);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .secondary-button:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* SEÇÃO DE PROBLEMAS - Pain points dos clientes */
+        .problems-section {
+            padding: 8rem 0;
+            background: var(--bg-dark-secondary);
+            position: relative;
+        }
+
+        .problems-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-tag {
+            color: var(--primary-gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-white) 0%, var(--primary-gold-light) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-description {
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .problem-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, transparent 100%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--border-gold);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .problem-card:hover::before {
+            opacity: 1;
+        }
+
+        .problem-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-dark) 100%);
+            color: var(--bg-dark);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .problem-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-white);
+        }
+
+        .problem-card p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .problem-list {
+            list-style: none;
+        }
+
+        .problem-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-light-gray);
+        }
+
+        .problem-list i {
+            color: var(--primary-gold);
+            font-size: 0.8rem;
+        }
+
+        /* SEÇÃO DE SOLUÇÕES - Como resolvemos os problemas */
+        .solutions-section {
+            padding: 8rem 0;
+            background: var(--bg-dark);
+            position: relative;
+        }
+
+        .solutions-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+        }
+
+        .solutions-tabs {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+            border-bottom: 1px solid var(--border-gold);
+            padding-bottom: 1rem;
+        }
+
+        .solution-tab {
+            padding: 1rem 2rem;
+            background: transparent;
+            color: var(--text-gray);
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .solution-tab.active {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--primary-gold);
+        }
+
+        .solution-content {
+            display: none;
+        }
+
+        .solution-content.active {
+            display: block;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg, var(--bg-dark-secondary) 0%, rgba(18, 18, 18, 0.8) 100%);
+            border: 1px solid var(--border-gold);
+            border-radius: 20px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-gold) 0%, var(--primary-gold-light) 100%);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary-gold);
+        }
+
+        .solution-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .solution-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-light) 100%);
+            color: var(--bg-dark);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .solution-card h3 {
+            font-size: 1.8rem;
+            color: var(--text-white);
+        }
+
+        .solution-card .solution-subtitle {
+            color: var(--primary-gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .solution-description {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .solution-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .solution-features li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-light-gray);
+        }
+
+        .solution-features i {
+            color: var(--primary-gold);
+            font-size: 1rem;
+        }
+
+        .solution-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-gold);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .solution-cta:hover {
+            background: var(--primary-gold);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--shadow-gold);
+        }
+
+        /* SEÇÃO DE METODOLOGIA - Como trabalhamos */
+        .methodology-section {
+            padding: 8rem 0;
+            background: var(--bg-dark-secondary);
+            position: relative;
+        }
+
+        .methodology-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+        }
+
+        .methodology-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .methodology-step {
+            text-align: center;
+            position: relative;
+            padding: 0 1.5rem;
+        }
+
+        .methodology-step::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: -15px;
+            width: 30px;
+            height: 2px;
+            background: var(--border-gold);
+        }
+
+        .methodology-step:first-child::before {
+            display: none;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-light) 100%);
+            color: var(--bg-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 2rem;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .methodology-step h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-white);
+        }
+
+        .methodology-step p {
+            color: var(--text-gray);
+            font-weight: 300;
+        }
+
+        /* SEÇÃO DE DIFERENCIAIS - O que nos torna únicos */
+        .differentiators-section {
+            padding: 8rem 0;
+            background: var(--bg-dark);
+            position: relative;
+        }
+
+        .differentiators-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+        }
+
+        .differentiators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .differentiator-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .differentiator-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--border-gold);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .differentiator-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-dark) 100%);
+            color: var(--bg-dark);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 2rem;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .differentiator-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-white);
+        }
+
+        .differentiator-card p {
+            color: var(--text-gray);
+            font-weight: 300;
+        }
+
+        /* SEÇÃO DE TRANSFORMAÇÃO - Resultados e cases */
+        .transformation-section {
+            padding: 8rem 0;
+            background: var(--bg-dark-secondary);
+            position: relative;
+        }
+
+        .transformation-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+        }
+
+        .transformation-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .transformation-card {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, rgba(10, 10, 10, 0.8) 100%);
+            border: 1px solid var(--border-gold);
+            border-radius: 20px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .transformation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .transformation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, transparent 100%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .transformation-card:hover::before {
+            opacity: 1;
+        }
+
+        .transformation-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-light) 100%);
+            color: var(--bg-dark);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .transformation-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-white);
+        }
+
+        .transformation-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .transformation-card p {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* SEÇÃO FINAL DE CTA - Call to action premium */
+        .final-cta-section {
+            padding: 10rem 0;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 30%),
+                radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 30%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-tag {
+            color: var(--primary-gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-title {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--text-white) 0%, var(--primary-gold-light) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .cta-description {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .primary-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 4rem;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-dark) 100%);
+            color: var(--bg-dark);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .primary-cta:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.5);
+        }
+
+        .secondary-cta {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--primary-gold);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .secondary-cta:hover {
+            color: var(--primary-gold-light);
+        }
+
+        /* FOOTER PREMIUM */
+        .footer {
+            background: var(--bg-darker);
+            padding: 5rem 0 3rem;
+            border-top: 1px solid var(--border-gold);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-dark) 100%);
+            color: var(--bg-dark);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .footer-logo-text {
+            font-size: 1.4rem;
+            background: linear-gradient(to right, var(--primary-gold), var(--primary-gold-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+
+        .footer-description {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .footer-heading {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-white);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 300;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* RESPONSIVIDADE AVANÇADA */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                text-align: center;
+                margin: 0 auto;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+
+            .problems-grid,
+            .solution-grid,
+            .methodology-steps,
+            .differentiators-grid,
+            .transformation-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .methodology-step::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .primary-button,
+            .secondary-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+
+            .problem-card,
+            .solution-card,
+            .transformation-card {
+                padding: 2rem;
+            }
+
+            .cta-title {
+                font-size: 2.5rem;
+            }
+
+            .primary-cta {
+                padding: 1.2rem 3rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-tag {
+                padding-left: 2rem;
+            }
+
+            .hero-tag::before {
+                width: 1.5rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .transformation-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ANIMAÇÕES E EFEITOS ESPECIAIS */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(212, 175, 55, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Efeito de revelação ao scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Efeito de brilho sutil em elementos dourados */
+        .gold-glow {
+            position: relative;
+        }
+
+        .gold-glow::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary-gold), var(--primary-gold-light), var(--primary-gold), var(--primary-gold-light));
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gold-glow:hover::after {
+            opacity: 0.3;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER PREMIUM -->
+    <header class="header" id="header">
+        <div class="nav-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">F</div>
+                <span class="logo-text">Fields Finanças</span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="#" class="nav-link">Início</a>
+                <a href="#" class="nav-link">Serviços</a>
+                <a href="#" class="nav-link">Sobre Nós</a>
+                <a href="#" class="nav-link">Cases</a>
+                <a href="#" class="nav-link">Contato</a>
+            </nav>
+            
+            <button class="cta-button">Agendar Consultoria</button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION ULTRA PREMIUM -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <div class="hero-tag">Excelência em Gestão Financeira</div>
+                <h1>Transforme Sua Empresa em uma Máquina de Gerar Riqueza</h1>
+                <p class="hero-subtitle">
+                    Para CEOs e empreendedores que querem controle absoluto sobre seu crescimento financeiro, 
+                    maximização de lucros e construção de patrimônio sólido.
+                </p>
+                <div class="hero-cta">
+                    <button class="primary-button gold-glow">
+                        <i class="fas fa-crown"></i>
+                        Diagnóstico Executivo
+                    </button>
+                    <button class="secondary-button">
+                        <i class="fas fa-play-circle"></i>
+                        Conhecer Nossa Metodologia
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE PROBLEMAS - Pain points dos clientes -->
+    <section class="problems-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Identificando Oportunidades</div>
+                <h2 class="section-title">Seu Negócio Está Deixando Dinheiro Sobre a Mesa?</h2>
+                <p class="section-description">
+                    Empresas bem-sucedidas ainda enfrentam desafios financeiros críticos que limitam 
+                    seu potencial máximo de lucratividade e crescimento.
+                </p>
+            </div>
+
+            <div class="problems-grid">
+                <div class="problem-card reveal">
+                    <div class="problem-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Falta de Visibilidade Financeira</h3>
+                    <p>Você não consegue enxergar com clareza para onde o dinheiro está indo e onde estão as reais oportunidades de economia.</p>
+                    <ul class="problem-list">
+                        <li><i class="fas fa-times"></i> Dificuldade em identificar custos ocultos</li>
+                        <li><i class="fas fa-times"></i> Relatórios financeiros complexos e pouco claros</li>
+                        <li><i class="fas fa-times"></i> Surpresas mensais no fluxo de caixa</li>
+                    </ul>
+                </div>
+
+                <div class="problem-card reveal">
+                    <div class="problem-icon">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <h3>Crescimento Não Lucrativo</h3>
+                    <p>Sua empresa cresce em faturamento, mas não em lucratividade, criando um ciclo de trabalho intenso com retorno limitado.</p>
+                    <ul class="problem-list">
+                        <li><i class="fas fa-times"></i> Aumento de receita sem aumento proporcional de lucro</li>
+                        <li><i class="fas fa-times"></i> Dificuldade em precificar corretamente</li>
+                        <li><i class="fas fa-times"></i> Estrutura de custos que não escala adequadamente</li>
+                    </ul>
+                </div>
+
+                <div class="problem-card reveal">
+                    <div class="problem-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Falta de Tempo para Estratégia</h3>
+                    <p>Você passa mais tempo apagando incêndios financeiros do que criando estratégias para multiplicar seu patrimônio.</p>
+                    <ul class="problem-list">
+                        <li><i class="fas fa-times"></i> Operacional consome tempo estratégico</li>
+                        <li><i class="fas fa-times"></i> Decisões financeiras reativas em vez de proativas</li>
+                        <li><i class="fas fa-times"></i> Falta de planejamento tributário eficiente</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE SOLUÇÕES - Como resolvemos os problemas -->
+    <section class="solutions-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Soluções Estratégicas</div>
+                <h2 class="section-title">Da Incerteza Financeira ao Controle Absoluto</h2>
+                <p class="section-description">
+                    Desenvolvemos abordagens personalizadas para transformar a gestão financeira 
+                    do seu negócio em uma vantagem competitiva definitiva.
+                </p>
+            </div>
+
+            <div class="solutions-tabs">
+                <button class="solution-tab active" data-tab="diagnostico">Diagnóstico Avançado</button>
+                <button class="solution-tab" data-tab="gestao">Gestão Estratégica</button>
+                <button class="solution-tab" data-tab="otimizacao">Otimização Total</button>
+            </div>
+
+            <div class="solution-content active" id="diagnostico">
+                <div class="solution-grid">
+                    <div class="solution-card gold-glow">
+                        <div class="solution-header">
+                            <div class="solution-icon">
+                                <i class="fas fa-search-dollar"></i>
+                            </div>
+                            <div>
+                                <h3>Análise Financeira Profunda</h3>
+                                <div class="solution-subtitle">Identificação de Oportunidades</div>
+                            </div>
+                        </div>
+                        
+                        <p class="solution-description">
+                            Mapeamento completo da saúde financeira do seu negócio, identificando 
+                            pontos de vazamento, oportunidades de economia e potencial não explorado.
+                        </p>
+
+                        <ul class="solution-features">
+                            <li><i class="fas fa-check"></i> Análise de margens por produto/serviço</li>
+                            <li><i class="fas fa-check"></i> Diagnóstico de eficiência operacional</li>
+                            <li><i class="fas fa-check"></i> Identificação de custos ocultos</li>
+                            <li><i class="fas fa-check"></i> Benchmarking setorial</li>
+                        </ul>
+
+                        <a href="#" class="solution-cta">
+                            Solicitar Diagnóstico
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="solution-card gold-glow">
+                        <div class="solution-header">
+                            <div class="solution-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div>
+                                <h3>Dashboard Executivo</h3>
+                                <div class="solution-subtitle">Visão Clara e Poderosa</div>
+                            </div>
+                        </div>
+                        
+                        <p class="solution-description">
+                            Painéis personalizados com os KPIs mais relevantes para seu negócio, 
+                            proporcionando visão instantânea da performance financeira em tempo real.
+                        </p>
+
+                        <ul class="solution-features">
+                            <li><i class="fas fa-check"></i> Métricas personalizadas para seu negócio</li>
+                            <li><i class="fas fa-check"></i> Alertas automáticos de desempenho</li>
+                            <li><i class="fas fa-check"></i> Acesso multiplataforma</li>
+                            <li><i class="fas fa-check"></i> Relatórios executivos automatizados</li>
+                        </ul>
+
+                        <a href="#" class="solution-cta">
+                            Conhecer Dashboard
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conteúdo das outras abas seria carregado aqui -->
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE METODOLOGIA - Como trabalhamos -->
+    <section class="methodology-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Metodologia Exclusiva</div>
+                <h2 class="section-title">O Processo Fields de Transformação Financeira</h2>
+                <p class="section-description">
+                    Desenvolvemos um método comprovado que já transformou a gestão financeira 
+                    de mais de 200 empresas em todo o Brasil.
+                </p>
+            </div>
+
+            <div class="methodology-steps">
+                <div class="methodology-step reveal">
+                    <div class="step-number">1</div>
+                    <h4>Imersão Completa</h4>
+                    <p>Análise profunda de todos os aspectos financeiros do seu negócio para identificar oportunidades precisas.</p>
+                </div>
+
+                <div class="methodology-step reveal">
+                    <div class="step-number">2</div>
+                    <h4>Estratégia Personalizada</h4>
+                    <p>Desenvolvimento de um plano sob medida para seus objetivos, recursos e mercado de atuação.</p>
+                </div>
+
+                <div class="methodology-step reveal">
+                    <div class="step-number">3</div>
+                    <h4>Implementação Guiada</h4>
+                    <p>Aplicação prática das estratégias com acompanhamento próximo para garantir resultados.</p>
+                </div>
+
+                <div class="methodology-step reveal">
+                    <div class="step-number">4</div>
+                    <h4>Otimização Contínua</h4>
+                    <p>Ajustes constantes baseados em performance e mudanças do mercado para maximizar resultados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE DIFERENCIAIS - O que nos torna únicos -->
+    <section class="differentiators-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Diferenciais Fields</div>
+                <h2 class="section-title">Por Que Escolher Nossa Consultoria?</h2>
+                <p class="section-description">
+                    Nossa abordagem exclusiva e foco em resultados tangíveis nos diferenciam 
+                    no mercado de consultoria financeira.
+                </p>
+            </div>
+
+            <div class="differentiators-grid">
+                <div class="differentiator-card reveal">
+                    <div class="differentiator-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Foco em Resultados</h3>
+                    <p>Nosso trabalho é medido pelos resultados financeiros concretos que entregamos, não apenas pela qualidade do diagnóstico.</p>
+                </div>
+
+                <div class="differentiator-card reveal">
+                    <div class="differentiator-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Expertise Setorial</h3>
+                    <p>Conhecimento profundo das particularidades do seu setor e das melhores práticas de gestão financeira aplicadas a ele.</p>
+                </div>
+
+                <div class="differentiator-card reveal">
+                    <div class="differentiator-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Acesso a Especialistas</h3>
+                    <p>Equipe multidisciplinar com especialistas em finanças, tributação, controladoria e estratégia empresarial.</p>
+                </div>
+
+                <div class="differentiator-card reveal">
+                    <div class="differentiator-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Abordagem Integrada</h3>
+                    <p>Visão holística que conecta finanças empresariais e pessoais para maximização patrimonial completa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE TRANSFORMAÇÃO - Resultados e cases -->
+    <section class="transformation-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Resultados Comprovados</div>
+                <h2 class="section-title">Transformação Financeira Real</h2>
+                <p class="section-description">
+                    Cases reais de empresas que implementaram nossa metodologia e alcançaram 
+                    resultados extraordinários em curto espaço de tempo.
+                </p>
+            </div>
+
+            <div class="transformation-cards">
+                <div class="transformation-card reveal">
+                    <div class="transformation-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Indústria de Componentes</h3>
+                    <div class="transformation-stats">
+                        <div class="stat">
+                            <div class="stat-value">+137%</div>
+                            <div class="stat-label">Lucratividade</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">R$ 380k</div>
+                            <div class="stat-label">Economia Anual</div>
+                        </div>
+                    </div>
+                    <p>Empresa familiar do setor industrial que conseguia crescer em faturamento mas não em lucratividade. Implementamos controles de custos produtivos e estratégia de precificação que transformaram completamente seus resultados.</p>
+                </div>
+
+                <div class="transformation-card reveal">
+                    <div class="transformation-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Tech Startup</h3>
+                    <div class="transformation-stats">
+                        <div class="stat">
+                            <div class="stat-value">+80%</div>
+                            <div class="stat-label">Eficiência</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">18 meses</div>
+                            <div class="stat-label">ROI</div>
+                        </div>
+                    </div>
+                    <p>Startup em fase de scale-up que precisava de estruturação financeira para suportar crescimento acelerado. Desenvolvemos modelo financeiro escalável e processos que permitiram triplicar de tamanho com sustentabilidade.</p>
+                </div>
+
+                <div class="transformation-card reveal">
+                    <div class="transformation-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>Varejo Multicanal</h3>
+                    <div class="transformation-stats">
+                        <div class="stat">
+                            <div class="stat-value">+62%</div>
+                            <div class="stat-label">Margem Líquida</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">R$ 220k</div>
+                            <div class="stat-label">Fluxo Mensal</div>
+                        </div>
+                    </div>
+                    <p>Rede de varejo com 12 lojas físicas e e-commerce que enfrentava desafios de integração e visibilidade financeira. Implementamos sistema unificado de gestão e KPIs específicos que revolucionaram a tomada de decisão.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO FINAL DE CTA - Call to action premium -->
+    <section class="final-cta-section">
+        <div class="container">
+            <div class="cta-content reveal">
+                <div class="cta-tag">Próximo Passo</div>
+                <h2 class="cta-title">Pronto Para Transformar Sua Gestão Financeira?</h2>
+                <p class="cta-description">
+                    Agende seu Diagnóstico Executivo Gratuito e descubra exatamente como 
+                    multiplicar a lucratividade do seu negócio com nossa metodologia exclusiva.
+                </p>
+                <a href="#" class="primary-cta gold-glow pulse">
+                    <i class="fas fa-calendar-check"></i>
+                    Agendar Diagnóstico Sem Compromisso
+                </a>
+                <br>
+                <a href="#" class="secondary-cta">
+                    <i class="fas fa-download"></i>
+                    Baixar Portfólio de Cases Completos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER PREMIUM -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">F</div>
+                        <span class="footer-logo-text">Fields Finanças</span>
+                    </div>
+                    <p class="footer-description">
+                        Transformando a gestão financeira de empresas e profissionais 
+                        que buscam excelência, controle e crescimento sustentável.
+                    </p>
+                </div>
+
+                <div class="footer-links-column">
+                    <h4 class="footer-heading">Serviços</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Consultoria Empresarial</a></li>
+                        <li><a href="#">Gestão Financeira Pessoal</a></li>
+                        <li><a href="#">Otimização Tributária</a></li>
+                        <li><a href="#">Planejamento Patrimonial</a></li>
+                        <li><a href="#">Diagnóstico Financeiro</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-column">
+                    <h4 class="footer-heading">Empresa</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Cases de Sucesso</a></li>
+                        <li><a href="#">Carreiras</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-column">
+                    <h4 class="footer-heading">Contato</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-envelope"></i> contato@fieldsfinancas.com.br</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> (11) 99999-9999</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> São Paulo, Brasil</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">© 2023 Fields Finanças. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT PARA INTERATIVIDADE E ANIMAÇÕES -->
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Reveal elements on scroll
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('revealed');
+                }
+            });
+        }
+
+        // Tab functionality for solutions section
+        function initSolutionTabs() {
+            const tabs = document.querySelectorAll('.solution-tab');
+            const contents = document.querySelectorAll('.solution-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        }
+
+        // Smooth scroll for navigation links
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize everything when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            revealOnScroll();
+            initSolutionTabs();
+            initSmoothScroll();
+        });
+
+        // Listen for scroll events
+        window.addEventListener('scroll', revealOnScroll);
+    </script>
+</body>
+</html>

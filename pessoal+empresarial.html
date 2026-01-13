@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão Integrada - Fields Finanças</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* VARIÁVEIS GLOBAIS - Padrão premium Fields */
+        :root {
+            --primary-gold: #D4AF37;
+            --primary-gold-light: #E6C659;
+            --primary-gold-dark: #B59530;
+            --bg-dark: #0A0A0A;
+            --bg-dark-secondary: #111111;
+            --bg-darker: #050505;
+            --text-white: #FFFFFF;
+            --text-gray: #B0B0B0;
+            --text-light-gray: #E0E0E0;
+            --border-gold: rgba(212, 175, 55, 0.3);
+            --shadow-gold: rgba(212, 175, 55, 0.15);
+            --glass-bg: rgba(10, 10, 10, 0.7);
+            --glass-border: rgba(212, 175, 55, 0.1);
+            --transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+            --gradient-gold: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-light) 100%);
+        }
+
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-gold);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            padding: 0 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-white);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--gradient-gold);
+            color: var(--bg-dark);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+
+        .back-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-gold);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .back-button:hover {
+            color: var(--primary-gold-light);
+            transform: translateX(-5px);
+        }
+
+        /* HERO SECTION VIP - Para empreendedores visionários */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efeito de partículas mais intenso para VIP */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 30%, rgba(212, 175, 55, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(212, 175, 55, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--gradient-gold);
+            color: var(--bg-dark);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px var(--shadow-gold);
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 7vw, 6rem);
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--text-white) 0%, var(--primary-gold-light) 50%, var(--primary-gold) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        /* Stats impressionantes no hero */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-gold);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* SEÇÃO DE PROBLEMAS - O que acontece quando não se tem visão integrada */
+        .problems-section {
+            padding: 6rem 0;
+            background: var(--bg-dark-secondary);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            color: var(--primary-gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-description {
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+
+        /* Grid de problemas vs soluções */
+        .problems-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .problems-column {
+            space-y: 2rem;
+        }
+
+        .problem-item, .solution-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+            transition: var(--transition);
+        }
+
+        .problem-item {
+            border-left: 4px solid #ff4444;
+        }
+
+        .solution-item {
+            border-left: 4px solid var(--primary-gold);
+        }
+
+        .problem-item:hover, .solution-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .item-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-item .item-icon {
+            background: rgba(255, 68, 68, 0.2);
+            color: #ff4444;
+        }
+
+        .solution-item .item-icon {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--primary-gold);
+        }
+
+        .item-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-white);
+        }
+
+        .item-description {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* SEÇÃO DE METODOLOGIA INTEGRADA - Como funciona a gestão dupla */
+        .methodology-section {
+            padding: 6rem 0;
+            background: var(--bg-dark);
+        }
+
+        .methodology-visual {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .side-pillar {
+            text-align: center;
+        }
+
+        .pillar-icon {
+            width: 120px;
+            height: 120px;
+            background: var(--gradient-gold);
+            color: var(--bg-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 2rem;
+            box-shadow: 0 20px 40px var(--shadow-gold);
+        }
+
+        .pillar-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text-white);
+        }
+
+        .pillar-description {
+            color: var(--text-gray);
+        }
+
+        /* Centro da metodologia - Integração */
+        .integration-center {
+            text-align: center;
+            position: relative;
+            padding: 3rem;
+            background: linear-gradient(135deg, var(--glass-bg) 0%, rgba(17, 17, 17, 0.8) 100%);
+            border: 2px solid var(--border-gold);
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+        }
+
+        .integration-center::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: var(--gradient-gold);
+            border-radius: 25px;
+            z-index: -1;
+            animation: pulse-border 3s infinite;
+        }
+
+        @keyframes pulse-border {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        .integration-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-gold);
+            color: var(--bg-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 2rem;
+        }
+
+        /* SEÇÃO DE PACOTES VIP - Diferentes níveis de transformação */
+        .packages-section {
+            padding: 6rem 0;
+            background: var(--bg-dark-secondary);
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .package-card {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, rgba(17, 17, 17, 0.9) 100%);
+            border: 1px solid var(--border-gold);
+            border-radius: 25px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-gold);
+        }
+
+        .package-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Badge especial para o pacote recomendado */
+        .package-card.featured {
+            border-color: var(--primary-gold);
+            box-shadow: 0 20px 40px var(--shadow-gold);
+            transform: translateY(-10px);
+        }
+
+        .package-card.featured::after {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--primary-gold);
+            color: var(--bg-dark);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .package-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-gold);
+            color: var(--bg-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 2rem;
+        }
+
+        .package-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-white);
+        }
+
+        .package-subtitle {
+            color: var(--primary-gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        .package-description {
+            color: var(--text-gray);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        /* Lista premium de benefícios */
+        .package-benefits {
+            list-style: none;
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+
+        .package-benefits li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-light-gray);
+        }
+
+        .package-benefits i {
+            color: var(--primary-gold);
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+        }
+
+        .package-cta {
+            display: block;
+            padding: 1.2rem 2rem;
+            background: transparent;
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-gold);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .package-card.featured .package-cta {
+            background: var(--gradient-gold);
+            color: var(--bg-dark);
+        }
+
+        .package-cta:hover {
+            background: var(--primary-gold);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--shadow-gold);
+        }
+
+        /* SEÇÃO DE CASES DE SUCESSO - Resultados reais de clientes VIP */
+        .success-cases-section {
+            padding: 6rem 0;
+            background: var(--bg-dark);
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .case-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(15px);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .case-card::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .case-card::after {
+            content: '✓';
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: var(--bg-dark);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .case-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--border-gold);
+        }
+
+        .case-title {
+            color: var(--primary-gold);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .case-result {
+            color: var(--text-white);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .case-description {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .case-metrics {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .metric-label {
+            color: var(--text-gray);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CALL TO ACTION FINAL VIP */
+        .final-cta-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+            text-align: center;
+            position: relative;
+        }
+
+        .final-cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-title {
+            font-size: 3.2rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--text-white) 0%, var(--primary-gold-light) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .cta-description {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .vip-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 4rem;
+            background: var(--gradient-gold);
+            color: var(--bg-dark);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            box-shadow: 0 15px 40px var(--shadow-gold);
+        }
+
+        .vip-cta:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px var(--shadow-gold);
+        }
+
+        /* ANIMAÇÕES */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 1200px) {
+            .methodology-visual {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .integration-center {
+                order: 2;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .problems-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .package-card {
+                padding: 2rem;
+            }
+
+            .case-metrics {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="nav-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">F</div>
+                <span class="logo-text">Fields Finanças</span>
+            </a>
+            <a href="#" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Voltar ao site
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION VIP - Para empreendedores visionários -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in-up">
+                <div class="hero-badge">Solução VIP Exclusiva</div>
+                <h1>Domine Ambos os Mundos</h1>
+                <p class="hero-subtitle">
+                    A única solução integrada que maximiza sua empresa E seu patrimônio pessoal simultaneamente. 
+                    Para empreendedores que pensam grande e querem resultados excepcionais.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">2x</div>
+                        <div class="stat-label">Mais Eficiência</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">40%</div>
+                        <div class="stat-label">Economia Fiscal</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3x</div>
+                        <div class="stat-label">Crescimento Patrimonial</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Visão Integrada</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE PROBLEMAS - O que acontece quando não se tem visão integrada -->
+    <section class="problems-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">O Grande Problema</div>
+                <h2 class="section-title">Gestão Separada = Oportunidades Perdidas</h2>
+                <p class="section-description">
+                    A maioria dos empreendedores gerencia empresa e vida pessoal separadamente, 
+                    perdendo milhares em oportunidades de otimização e crescimento.
+                </p>
+            </div>
+
+            <div class="problems-grid">
+                <!-- COLUNA DOS PROBLEMAS -->
+                <div class="problems-column">
+                    <h3 style="color: #ff4444; text-align: center; margin-bottom: 2rem; font-size: 1.5rem;">⚠️ Gestão Separada</h3>
+                    
+                    <div class="problem-item reveal">
+                        <div class="item-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h4 class="item-title">Decisões Contraditórias</h4>
+                        <p class="item-description">
+                            Você investe na empresa enquanto se endivida pessoalmente, ou vice-versa. 
+                            Falta visão do conjunto.
+                        </p>
+                    </div>
+
+                    <div class="problem-item reveal">
+                        <div class="item-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h4 class="item-title">Ineficiência Fiscal</h4>
+                        <p class="item-description">
+                            Paga impostos desnecessários por não otimizar a relação entre 
+                            retiradas empresariais e gastos pessoais.
+                        </p>
+                    </div>
+
+                    <div class="problem-item reveal">
+                        <div class="item-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4 class="item-title">Crescimento Limitado</h4>
+                        <p class="item-description">
+                            Não consegue acelerar o patrimônio pessoal usando a empresa 
+                            como alavanca estratégica.
+                        </p>
+                    </div>
+
+                    <div class="problem-item reveal">
+                        <div class="item-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4 class="item-title">Tempo Duplicado</h4>
+                        <p class="item-description">
+                            Gasta o dobro do tempo gerenciando duas finanças separadas 
+                            que poderiam ser integradas.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- COLUNA DAS SOLUÇÕES -->
+                <div class="solutions-column">
+                    <h3 style="color: var(--primary-gold); text-align: center; margin-bottom: 2rem; font-size: 1.5rem;">✅ Gestão Integrada</h3>
+                    
+                    <div class="solution-item reveal">
+                        <div class="item-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4 class="item-title">Otimização Fiscal Inteligente</h4>
+                        <p class="item-description">
+                            Estratégias avançadas que reduzem a carga tributária total 
+                            usando a sinergia empresa-pessoa física.
+                        </p>
+                    </div>
+
+                    <div class="solution-item reveal">
+                        <div class="item-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h4 class="item-title">Crescimento Exponencial</h4>
+                        <p class="item-description">
+                            Usa a empresa como alavanca para acelerar o patrimônio pessoal 
+                            de forma legal e eficiente.
+                        </p>
+                    </div>
+
+                    <div class="solution-item reveal">
+                        <div class="item-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h4 class="item-title">Eficiência Máxima</h4>
+                        <p class="item-description">
+                            Uma única gestão integrada que economiza tempo e multiplica 
+                            resultados exponencialmente.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE METODOLOGIA INTEGRADA - Como funciona a gestão dupla -->
+    <section class="methodology-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Nossa Metodologia Exclusiva</div>
+                <h2 class="section-title">Como Integramos Seus Dois Mundos</h2>
+                <p class="section-description">
+                    Nossa metodologia proprietária sincroniza perfeitamente suas finanças empresariais 
+                    e pessoais para gerar resultados que seriam impossíveis separadamente.
+                </p>
+            </div>
+
+            <div class="methodology-visual">
+                <!-- PILAR EMPRESARIAL -->
+                <div class="side-pillar reveal">
+                    <div class="pillar-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="pillar-title">Pilar Empresarial</h3>
+                    <p class="pillar-description">
+                        Maximizamos o lucro e eficiência da empresa, criando base sólida 
+                        para investimentos e crescimento patrimonial.
+                    </p>
+                </div>
+
+                <!-- CENTRO - INTEGRAÇÃO -->
+                <div class="integration-center reveal">
+                    <div class="integration-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3 style="color: var(--text-white); margin-bottom: 1rem;">Integração Inteligente</h3>
+                    <p style="color: var(--text-gray);">
+                        O segredo está na sincronização. Cada movimento em um lado 
+                        potencializa o resultado do outro, criando um efeito multiplicador.
+                    </p>
+                </div>
+
+                <!-- PILAR PESSOAL -->
+                <div class="side-pillar reveal">
+                    <div class="pillar-icon">
+                        <i class="fas fa-user-crown"></i>
+                    </div>
+                    <h3 class="pillar-title">Pilar Pessoal</h3>
+                    <p class="pillar-description">
+                        Construímos seu patrimônio pessoal de forma acelerada, 
+                        usando a empresa como alavanca estratégica.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE PACOTES VIP - Diferentes níveis de transformação -->
+    <section class="packages-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Jornadas de Transformação</div>
+                <h2 class="section-title">Escolha Seu Nível de Ambição</h2>
+                <p class="section-description">
+                    Três níveis de transformação, cada um projetado para um estágio diferente 
+                    da sua jornada empreendedora. Todos com gestão 100% integrada.
+                </p>
+            </div>
+
+            <div class="packages-grid">
+                <!-- PACOTE BÁSICO -->
+                <div class="package-card reveal">
+                    <div class="package-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3 class="package-title">Integração Essencial</h3>
+                    <div class="package-subtitle">Organize e Sincronize</div>
+                    <p class="package-description">
+                        Ideal para empreendedores que querem começar a integrar 
+                        empresa e vida pessoal de forma organizada e eficiente.
+                    </p>
+
+                    <ul class="package-benefits">
+                        <li><i class="fas fa-check-circle"></i> Controle integrado de fluxo de caixa (empresa + pessoal)</li>
+                        <li><i class="fas fa-check-circle"></i> Dashboards unificados em tempo real</li>
+                        <li><i class="fas fa-check-circle"></i> Estratégia básica de retiradas otimizadas</li>
+                        <li><i class="fas fa-check-circle"></i> Planejamento fiscal inicial</li>
+                        <li><i class="fas fa-check-circle"></i> Reuniões mensais de alinhamento</li>
+                        <li><i class="fas fa-check-circle"></i> Relatórios integrados mensais</li>
+                    </ul>
+
+                    <a href="#" class="package-cta">Começar Integração</a>
+                </div>
+
+                <!-- PACOTE INTERMEDIÁRIO - MAIS ESCOLHIDO -->
+                <div class="package-card featured reveal">
+                    <div class="package-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="package-title">Crescimento Acelerado</h3>
+                    <div class="package-subtitle">Otimize e Multiplique</div>
+                    <p class="package-description">
+                        Para empreendedores que querem acelerar tanto o crescimento 
+                        da empresa quanto a construção do patrimônio pessoal.
+                    </p>
+
+                    <ul class="package-benefits">
+                        <li><i class="fas fa-check-circle"></i> Tudo do pacote anterior +</li>
+                        <li><i class="fas fa-check-circle"></i> Otimização fiscal avançada empresa-pessoa</li>
+                        <li><i class="fas fa-check-circle"></i> Estratégias de investimento integradas</li>
+                        <li><i class="fas fa-check-circle"></i> Planejamento de crescimento sincronizado</li>
+                        <li><i class="fas fa-check-circle"></i> Power BI com análises preditivas</li>
+                        <li><i class="fas fa-check-circle"></i> Reuniões quinzenais estratégicas</li>
+                        <li><i class="fas fa-check-circle"></i> Análise de viabilidade para novos investimentos</li>
+                    </ul>
+
+                    <a href="#" class="package-cta">Acelerar Crescimento</a>
+                </div>
+
+                <!-- PACOTE PREMIUM -->
+                <div class="package-card reveal">
+                    <div class="package-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="package-title">Domínio Estratégico</h3>
+                    <div class="package-subtitle">Liberdade Total</div>
+                    <p class="package-description">
+                        Solução completa para empreendedores que querem dominar 
+                        completamente ambos os mundos e alcançar liberdade financeira.
+                    </p>
+
+                    <ul class="package-benefits">
+                        <li><i class="fas fa-check-circle"></i> Tudo dos pacotes anteriores +</li>
+                        <li><i class="fas fa-check-circle"></i> Gestão patrimonial VIP integrada</li>
+                        <li><i class="fas fa-check-circle"></i> Planejamento sucessório empresa-família</li>
+                        <li><i class="fas fa-check-circle"></i> Estratégias de holding familiar</li>
+                        <li><i class="fas fa-check-circle"></i> Reuniões semanais executivas</li>
+                        <li><i class="fas fa-check-circle"></i> Curso exclusivo: "Gestão Financeira Integrada"</li>
+                        <li><i class="fas fa-check-circle"></i> Acesso direto ao time senior 24/7</li>
+                        <li><i class="fas fa-check-circle"></i> Análises de cenários futuros</li>
+                    </ul>
+
+                    <a href="#" class="package-cta">Dominar Ambos Mundos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE CASES DE SUCESSO - Resultados reais de clientes VIP -->
+    <section class="success-cases-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Casos de Sucesso</div>
+                <h2 class="section-title">Resultados Que Falam Por Si</h2>
+                <p class="section-description">
+                    Veja como nossos clientes VIP transformaram suas vidas e negócios 
+                    com nossa gestão integrada exclusiva.
+                </p>
+            </div>
+
+            <div class="cases-grid">
+                <div class="case-card reveal">
+                    <h4 class="case-title">CEO de Tecnologia</h4>
+                    <div class="case-result">Patrimônio pessoal: +180% em 24 meses</div>
+                    <p class="case-description">
+                        Integrou completamente as finanças da startup com seu patrimônio pessoal. 
+                        Usou a empresa para acelerar investimentos pessoais de forma legal.
+                    </p>
+                    <div class="case-metrics">
+                        <div class="metric">
+                            <div class="metric-value">R$ 2.8M</div>
+                            <div class="metric-label">Patrimônio Atual</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">35%</div>
+                            <div class="metric-label">Economia Fiscal</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-card reveal">
+                    <h4 class="case-title">Casal Empreendedor</h4>
+                    <div class="case-result">Anteciparam aposentadoria em 12 anos</div>
+                    <p class="case-description">
+                        Criaram estratégia integrada que maximiza tanto o crescimento das empresas 
+                        quanto a formação do patrimônio familiar de longo prazo.
+                    </p>
+                    <div class="case-metrics">
+                        <div class="metric">
+                            <div class="metric-value">R$ 45k</div>
+                            <div class="metric-label">Renda Passiva/Mês</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">3x</div>
+                            <div class="metric-label">Crescimento</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-card reveal">
+                    <h4 class="case-title">Empresário do Varejo</h4>
+                    <div class="case-result">Multiplicou patrimônio por 4x</div>
+                    <p class="case-description">
+                        Otimizou completamente a relação entre as 3 lojas e seu patrimônio pessoal. 
+                        Criou holding familiar e estrutura de investimentos integrada.
+                    </p>
+                    <div class="case-metrics">
+                        <div class="metric">
+                            <div class="metric-value">R$ 1.2M</div>
+                            <div class="metric-label">Economia Anual</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">22%</div>
+                            <div class="metric-label">ROI Médio</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-card reveal">
+                    <h4 class="case-title">Médica Empreendedora</h4>
+                    <div class="case-result">Liberdade financeira aos 42 anos</div>
+                    <p class="case-description">
+                        Integrou clínica médica com investimentos pessoais. Criou fluxo de renda 
+                        passiva que permite trabalhar por escolha, não necessidade.
+                    </p>
+                    <div class="case-metrics">
+                        <div class="metric">
+                            <div class="metric-value">R$ 25k</div>
+                            <div class="metric-label">Renda Passiva/Mês</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">18</div>
+                            <div class="metric-label">Meses</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-card reveal">
+                    <h4 class="case-title">Empresário de Construção</h4>
+                    <div class="case-result">Criou império familiar</div>
+                    <p class="case-description">
+                        Estruturou holding que integra construtora, investimentos imobiliários 
+                        e patrimônio familiar. Planejamento sucessório completo.
+                    </p>
+                    <div class="case-metrics">
+                        <div class="metric">
+                            <div class="metric-value">R$ 15M</div>
+                            <div class="metric-label">Patrimônio Total</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">60%</div>
+                            <div class="metric-label">Crescimento</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-card reveal">
+                    <h4 class="case-title">Advogada & Escritório</h4>
+                    <div class="case-result">Triplicou eficiência financeira</div>
+                    <p class="case-description">
+                        Otimizou gestão do escritório de advocacia integrada com patrimônio pessoal. 
+                        Estratégia tributária que reduziu impostos em 40%.
+                    </p>
+                    <div class="case-metrics">
+                        <div class="metric">
+                            <div class="metric-value">40%</div>
+                            <div class="metric-label">Menos Impostos</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">3x</div>
+                            <div class="metric-label">Eficiência</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION FINAL VIP -->
+    <section class="final-cta-section">
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2 class="cta-title">Está Pronto Para Dominar Ambos os Mundos?</h2>
+                <p class="cta-description">
+                    Pare de gerenciar empresa e vida pessoal separadamente. 
+                    <strong>Agende seu Diagnóstico Estratégico VIP</strong> e descubra como integrar 
+                    suas finanças pode multiplicar seus resultados por 3x ou mais.
+                </p>
+                <a href="#" class="vip-cta">
+                    <i class="fas fa-crown"></i>
+                    Agendar Diagnóstico VIP Gratuito
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- JAVASCRIPT PARA MÁXIMA INTERATIVIDADE -->
+    <script>
+        // Sistema avançado de scroll reveal com timing personalizado
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('revealed');
+                }
+            });
+        }
+
+        // Sistema de hover premium para package cards
+        function initPackageCards() {
+            const packageCards = document.querySelectorAll('.package-card');
+            
+            packageCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    // Efeito especial para o featured
+                    if (this.classList.contains('featured')) {
+                        this.style.transform = 'translateY(-20px) scale(1.05)';
+                        this.style.boxShadow = '0 40px 80px var(--shadow-gold)';
+                    } else {
+                        this.style.transform = 'translateY(-15px)';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    if (this.classList.contains('featured')) {
+                        this.style.transform = 'translateY(-10px) scale(1)';
+                        this.style.boxShadow = '0 20px 40px var(--shadow-gold)';
+                    } else {
+                        this.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+        }
+
+        // Animação especial para stats no hero
+        function animateHeroStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            statNumbers.forEach(stat => {
+                const finalValue = stat.textContent;
+                let currentValue = 0;
+                const increment = finalValue.includes('%') ? 1 : 0.1;
+                const isPercentage = finalValue.includes('%');
+                const isMultiplier = finalValue.includes('x');
+                
+                const timer = setInterval(() => {
+                    currentValue += increment;
+                    
+                    if (isPercentage) {
+                        stat.textContent = Math.floor(currentValue) + '%';
+                        if (currentValue >= parseInt(finalValue)) {
+                            stat.textContent = finalValue;
+                            clearInterval(timer);
+                        }
+                    } else if (isMultiplier) {
+                        stat.textContent = Math.floor(currentValue) + 'x';
+                        if (currentValue >= parseInt(finalValue)) {
+                            stat.textContent = finalValue;
+                            clearInterval(timer);
+                        }
+                    } else {
+                        stat.textContent = Math.floor(currentValue) + '%';
+                        if (currentValue >= 100) {
+                            stat.textContent = finalValue;
+                            clearInterval(timer);
+                        }
+                    }
+                }, 50);
+            });
+        }
+
+        // Sistema de comparação visual entre problemas e soluções
+        function initProblemsComparison() {
+            const problemItems = document.querySelectorAll('.problem-item');
+            const solutionItems = document.querySelectorAll('.solution-item');
+            
+            problemItems.forEach((problem, index) => {
+                problem.addEventListener('mouseenter', function() {
+                    // Destaca a solução correspondente
+                    if (solutionItems[index]) {
+                        solutionItems[index].style.transform = 'translateY(-5px)';
+                        solutionItems[index].style.borderColor = 'var(--primary-gold)';
+                    }
+                });
+                
+                problem.addEventListener('mouseleave', function() {
+                    if (solutionItems[index]) {
+                        solutionItems[index].style.transform = 'translateY(0)';
+                        solutionItems[index].style.borderColor = 'var(--glass-border)';
+                    }
+                });
+            });
+        }
+
+        // Efeito de partículas flutuantes para o hero VIP
+        function createFloatingParticles() {
+            const hero = document.querySelector('.hero');
+            
+            for (let i = 0; i < 10; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    background: var(--primary-gold);
+                    border-radius: 50%;
+                    opacity: 0.3;
+                    animation: float${i} ${8 + Math.random() * 4}s infinite ease-in-out;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                `;
+                
+                // Cria animação única para cada partícula
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes float${i} {
+                        0%, 100% { transform: translateY(0px) translateX(0px); }
+                        25% { transform: translateY(-20px) translateX(10px); }
+                        50% { transform: translateY(-10px) translateX(-15px); }
+                        75% { transform: translateY(-30px) translateX(5px); }
+                    }
+                `;
+                document.head.appendChild(style);
+                hero.appendChild(particle);
+            }
+        }
+
+        // Sistema de tracking avançado para analytics VIP
+        function initVIPTracking() {
+            let engagementScore = 0;
+            const interactions = [];
+            
+            // Track package card interests
+            document.querySelectorAll('.package-card').forEach((card, index) => {
+                card.addEventListener('mouseenter', () => {
+                    interactions.push({
+                        type: 'package_interest',
+                        package: index,
+                        timestamp: Date.now()
+                    });
+                    engagementScore += 5;
+                });
+            });
+            
+            // Track case study engagement
+            document.querySelectorAll('.case-card').forEach((card, index) => {
+                card.addEventListener('mouseenter', () => {
+                    interactions.push({
+                        type: 'case_study_view',
+                        case: index,
+                        timestamp: Date.now()
+                    });
+                    engagementScore += 3;
+                });
+            });
+            
+            // Track scroll depth milestones
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+                
+                if (scrollPercent > 25 && !window.milestone25) {
+                    window.milestone25 = true;
+                    engagementScore += 10;
+                }
+                if (scrollPercent > 50 && !window.milestone50) {
+                    window.milestone50 = true;
+                    engagementScore += 15;
+                }
+                if (scrollPercent > 75 && !window.milestone75) {
+                    window.milestone75 = true;
+                    engagementScore += 20;
+                }
+                if (scrollPercent > 90 && !window.milestone90) {
+                    window.milestone90 = true;
+                    engagementScore += 25;
+                }
+            });
+            
+            // High-intent actions
+            document.querySelectorAll('.package-cta, .vip-cta').forEach(cta => {
+                cta.addEventListener('click', () => {
+                    interactions.push({
+                        type: 'high_intent_click',
+                        element: cta.textContent,
+                        timestamp: Date.now(),
+                        engagement_score: engagementScore
+                    });
+                });
+            });
+        }
+
+        // Efeito especial para o CTA VIP final
+        function initVIPCTA() {
+            const vipCTA = document.querySelector('.vip-cta');
+            
+            vipCTA.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.05)';
+                
+                // Efeito de onda dourada
+                const wave = document.createElement('div');
+                wave.style.cssText = `
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 0;
+                    height: 0;
+                    background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
+                    border-radius: 50%;
+                    transform: translate(-50%, -50%);
+                    animation: waveExpand 1s ease-out;
+                    pointer-events: none;
+                    z-index: -1;
+                `;
+                
+                this.style.position = 'relative';
+                this.appendChild(wave);
+                
+                // Remove a onda após a animação
+                setTimeout(() => {
+                    if (wave.parentNode) {
+                        wave.remove();
+                    }
+                }, 1000);
+            });
+            
+            vipCTA.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+            
+            // Adiciona a animação CSS
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes waveExpand {
+                    0% { width: 0; height: 0; opacity: 1; }
+                    100% { width: 200px; height: 200px; opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Inicialização completa
+        document.addEventListener('DOMContentLoaded', function() {
+            revealOnScroll();
+            initPackageCards();
+            initProblemsComparison();
+            initVIPTracking();
+            initVIPCTA();
+            initFAQSystem();
+            initGuaranteeCards();
+            createFloatingParticles();
+            createUrgencyEffect();
+            initSmartScroll();
+            
+            // Anima stats após um delay
+            setTimeout(animateHeroStats, 1000);
+            
+            // Animação inicial dos guarantee cards
+            document.querySelectorAll('.guarantee-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease-out';
+            });
+        });
+
+        // Scroll listeners
+        window.addEventListener('scroll', revealOnScroll);
+
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
